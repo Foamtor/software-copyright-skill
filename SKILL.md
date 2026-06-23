@@ -190,23 +190,111 @@ python3 {baseDir}/scripts/merge_chapters.py \
 
 详细格式规范见 `{baseDir}/references/格式规范.md`。
 
-## 配图方案
+## 阶段6.5：配图生成
 
-推荐方案（按优先级）：
-1. **Excalidraw Diagram Skill** — 手绘风格，专业美观
-2. **D2 Language** — 文本转图表，语法简洁
-3. **matplotlib** — 基础方案，精确控制尺寸
+说明书需要架构图、流程图等配图。
 
-不要使用Mermaid（字体太小，不适合打印）。
+### 方案选择（按优先级）
 
-配图尺寸：宽10英寸，分辨率300dpi，中文字体用 WenQuanYi Zen Hei 或 SimHei。
+1. **Excalidraw Diagram Skill** ⭐⭐⭐⭐⭐ — 手绘风格，专业美观，内置视觉验证
+2. **D2 Language** ⭐⭐⭐⭐ — 文本转图表，语法简洁
+3. **PlantUML** ⭐⭐⭐⭐ — 经典UML，支持多种图表类型
+4. **matplotlib** ⭐⭐⭐ — 基础方案，精确控制尺寸
 
-## 截图补充
+**不要使用Mermaid**（字体太小，不适合打印）。
 
-生成的文档中图片标题是占位符，用户需要手动补充系统截图：
-- 截图分辨率建议1920×1080或更高
-- 避免截取浏览器边框
-- 文件命名：`01_登录页面.png`、`02_首页.png`
+### 配图类型
+
+| 配图 | 说明 |
+|------|------|
+| 架构图 | 系统总体架构，展示各层关系 |
+| 数据流向图 | 数据从输入到输出的完整流程 |
+| 技术栈图 | 前后端技术栈展示 |
+| 功能模块图 | 各功能模块及其子功能 |
+
+### 生成命令
+
+```bash
+python3 {baseDir}/scripts/generate_diagrams.py \
+  --project-info /tmp/project_info.json \
+  --output-dir /output/images
+```
+
+配图尺寸：宽10英寸，高7.5英寸（架构图）或5英寸（流程图），分辨率300dpi。
+
+中文字体设置：
+```python
+plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'SimHei', 'DejaVu Sans']
+```
+
+### 替换已有docx中的图片
+
+```bash
+python3 {baseDir}/scripts/replace_docx_images.py \
+  --docx /output/说明书.docx \
+  --images-map /tmp/images_map.json \
+  --output /output/说明书_新.docx
+```
+
+详细方案见 `{baseDir}/references/配图生成最佳实践.md` 和 `{baseDir}/references/图表工具调研报告.md`。
+
+## 阶段6.6：截图处理
+
+说明书需要大量系统截图，提供两种模式：
+
+### 模式A：用户预截图 + 智能匹配（推荐）
+
+用户预先截图放到文件夹，用脚本自动匹配到说明书章节：
+
+```bash
+python3 {baseDir}/scripts/match_screenshots.py \
+  --screenshots /path/to/screenshots \
+  --manual /tmp/manual_content.json \
+  --output /tmp/match_report.json
+```
+
+截图命名建议：`01_登录页面.png`、`02_首页.png`（数字前缀+功能名称）。
+
+### 模式B：自动截图
+
+给系统URL，用Playwright自动访问并截图：
+
+```bash
+python3 {baseDir}/scripts/auto_screenshot.py \
+  --url https://your-system.com \
+  --output /path/to/screenshots
+```
+
+截图分辨率建议1920×1080或更高，避免截取浏览器边框。
+
+详细流程见 `{baseDir}/references/截图功能规范.md` 和 `{baseDir}/references/截图功能使用示例.md`。
+
+## 阶段7：提交清单生成
+
+所有文档完成后，生成提交清单：
+
+提交清单包含：
+- 申请信息（软件名称、版本号、著作权人等）
+- 提交材料清单（信息采集表、说明书、源代码文档）
+- 提交步骤（在线填报、材料准备、提交申请）
+- 注意事项（格式要求、常见问题）
+- 需要用户补充的内容（如系统截图）
+
+模板见 `{baseDir}/references/提交清单模板.md`。
+
+## 文档验证
+
+生成后必须验证格式：
+
+```python
+from docx import Document
+doc = Document('说明书.docx')
+for para in doc.paragraphs[:10]:
+    if para.style.name.startswith('Heading'):
+        print(f"{para.style.name}: {para.runs[0].font.size}")
+```
+
+验证脚本见 `{baseDir}/references/文档验证脚本.md`。
 
 ## ⚠️ 关键注意事项
 
@@ -223,3 +311,17 @@ python3 {baseDir}/scripts/merge_chapters.py \
 - `{baseDir}/references/格式规范.md` — Word格式 + 写作规范完整版
 - `{baseDir}/references/信息采集表填写要求.md` — 各字段填写要求和字数限制
 - `{baseDir}/references/常见问题.md` — 实际使用中的问题和解决方案
+- `{baseDir}/references/软著申请要求.md` — 软著申请的总体要求
+- `{baseDir}/references/提交清单模板.md` — 提交清单模板
+- `{baseDir}/references/配图生成最佳实践.md` — 配图方案选择和最佳实践
+- `{baseDir}/references/图表工具调研报告.md` — 图表工具对比调研
+- `{baseDir}/references/截图功能规范.md` — 截图功能使用流程
+- `{baseDir}/references/截图功能使用示例.md` — 截图功能完整示例
+- `{baseDir}/references/文档验证脚本.md` — 文档格式验证脚本
+- `{baseDir}/references/章节生成提示词.md` — 章节生成的提示词模板
+- `{baseDir}/references/读取doc文件.md` — 读取旧版.doc格式文件的方法
+- `{baseDir}/references/python-docx操作要点.md` — python-docx库使用要点
+- `{baseDir}/prompts/大纲生成.md` — 大纲生成提示词
+- `{baseDir}/prompts/章节生成.md` — 章节生成提示词
+- `{baseDir}/prompts/章节审阅.md` — 章节审阅提示词
+- `{baseDir}/prompts/代码提取.md` — 代码提取提示词
