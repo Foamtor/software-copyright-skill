@@ -192,49 +192,61 @@ python3 {baseDir}/scripts/merge_chapters.py \
 
 ## 阶段6.5：配图生成
 
-说明书需要架构图、流程图等配图。
+说明书需要架构图、流程图等配图。**必须使用 Excalidraw Diagram Skill**。
 
-### 方案选择（按优先级）
+### 工作流程
 
-1. **Excalidraw Diagram Skill** ⭐⭐⭐⭐⭐ — 手绘风格，专业美观，内置视觉验证
-2. **D2 Language** ⭐⭐⭐⭐ — 文本转图表，语法简洁
-3. **PlantUML** ⭐⭐⭐⭐ — 经典UML，支持多种图表类型
-4. **matplotlib** ⭐⭐⭐ — 基础方案，精确控制尺寸
+```
+1. 加载 excalidraw-diagram skill（阅读其SKILL.md了解设计方法论）
+2. 根据项目信息，为每张配图设计Excalidraw JSON
+3. 使用 render_excalidraw.py 渲染为PNG
+4. 视觉验证循环：渲染→查看→修复→重新渲染（2-4次）
+5. 使用 replace_docx_images.py 将PNG插入Word文档
+```
 
-**不要使用Mermaid**（字体太小，不适合打印）。
+### 配图类型与视觉模式
 
-### 配图类型
+| 配图类型 | 说明 | Excalidraw视觉模式 |
+|----------|------|-------------------|
+| 架构图 | 系统总体架构，展示各层关系 | Assembly Line（分层结构）|
+| 数据流向图 | 数据从输入到输出的完整流程 | Fan-Out / Convergence |
+| 技术栈图 | 前后端技术栈展示 | Tree（树形结构）|
+| 功能模块图 | 各功能模块及其子功能 | Side-by-Side + 层级连接 |
 
-| 配图 | 说明 |
-|------|------|
-| 架构图 | 系统总体架构，展示各层关系 |
-| 数据流向图 | 数据从输入到输出的完整流程 |
-| 技术栈图 | 前后端技术栈展示 |
-| 功能模块图 | 各功能模块及其子功能 |
-
-### 生成命令
+### 生成步骤
 
 ```bash
-python3 {baseDir}/scripts/generate_diagrams.py \
-  --project-info /tmp/project_info.json \
-  --output-dir /output/images
+# 1. 确认Excalidraw Skill已安装
+ls ~/.hermes/skills/creative/excalidraw-diagram/references/render_excalidraw.py
+# 或通过 npx skills add coleam00/excalidraw-diagram-skill 安装
+
+# 2. 确认渲染环境
+cd {baseDir}/../excalidraw-diagram/references && uv sync && uv run playwright install chromium
+
+# 3. Agent手写Excalidraw JSON（遵循excalidraw-diagram skill的设计方法论）
+#    保存为 .excalidraw 文件
+
+# 4. 渲染为PNG
+uv run python render_excalidraw.py /output/images/architecture.excalidraw
+
+# 5. 视觉验证：查看PNG → 修复JSON → 重新渲染（2-4次循环）
 ```
 
-配图尺寸：宽10英寸，高7.5英寸（架构图）或5英寸（流程图），分辨率300dpi。
-
-中文字体设置：
-```python
-plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'SimHei', 'DejaVu Sans']
-```
-
-### 替换已有docx中的图片
+### 插入Word
 
 ```bash
 python3 {baseDir}/scripts/replace_docx_images.py \
   --docx /output/说明书.docx \
   --images-map /tmp/images_map.json \
-  --output /output/说明书_新.docx
+  --output /output/说明书_含配图.docx
 ```
+
+⚠️ 替换时不要创建 `.backup` 文件，否则会被打包进docx导致文件大小翻倍。
+
+### 备选方案（仅在Excalidraw不可用时）
+
+1. **D2 Language** — `curl -fsSL https://d2lang.com/install.sh | sh -s --`
+2. **matplotlib** — `pip install matplotlib`，使用 `{baseDir}/scripts/generate_diagrams.py`（样式不够专业）
 
 详细方案见 `{baseDir}/references/配图生成最佳实践.md` 和 `{baseDir}/references/图表工具调研报告.md`。
 
