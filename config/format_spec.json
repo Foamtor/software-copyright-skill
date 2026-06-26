@@ -1,0 +1,197 @@
+{
+  "version": "1.0",
+  "description": "软著说明书格式规范配置文件",
+  "page": {
+    "width_cm": 21.0,
+    "height_cm": 29.7,
+    "orientation": "portrait",
+    "margins": {
+      "top_cm": 2.54,
+      "bottom_cm": 2.54,
+      "left_cm": 3.17,
+      "right_cm": 3.17,
+      "header_distance_cm": 1.5,
+      "footer_distance_cm": 1.75
+    }
+  },
+  "header": {
+    "enabled": true,
+    "left": {
+      "text": "{software_name}{version}",
+      "font": "宋体",
+      "size_pt": 9,
+      "bold": false,
+      "color": "000000"
+    },
+    "right": {
+      "text": "{page_number}",
+      "font": "宋体",
+      "size_pt": 9,
+      "bold": false,
+      "color": "000000"
+    }
+  },
+  "cover": {
+    "title": {
+      "font": "黑体",
+      "size_pt": 22,
+      "bold": true,
+      "color": "000000",
+      "align": "center",
+      "line_spacing": null,
+      "space_before_pt": null,
+      "space_after_pt": null
+    },
+    "subtitle": {
+      "font": "黑体",
+      "size_pt": 16,
+      "bold": false,
+      "color": "000000",
+      "align": "center"
+    },
+    "company": {
+      "font": "宋体",
+      "size_pt": 16,
+      "bold": true,
+      "color": "000000",
+      "align": "center",
+      "position": "bottom_last_two"
+    },
+    "date": {
+      "font": "宋体",
+      "size_pt": 16,
+      "bold": true,
+      "color": "000000",
+      "align": "center",
+      "position": "bottom_last_two"
+    }
+  },
+  "heading1": {
+    "style_name": "Heading 1",
+    "font": "黑体",
+    "font_en": "黑体",
+    "font_cn": "黑体",
+    "size_pt": 16,
+    "bold": false,
+    "italic": false,
+    "color": "000000",
+    "align": "justify",
+    "first_line_indent_cm": 1.18,
+    "left_indent_cm": 0,
+    "right_indent_cm": 0,
+    "line_spacing": 1.5,
+    "space_before_pt": 0,
+    "space_after_pt": 0,
+    "outline_level": 1,
+    "keep_with_next": true,
+    "page_break_before": false
+  },
+  "heading2": {
+    "style_name": "Heading 2",
+    "font": "黑体",
+    "font_en": "黑体",
+    "font_cn": "黑体",
+    "size_pt": 16,
+    "bold": false,
+    "italic": false,
+    "color": "000000",
+    "align": "justify",
+    "first_line_indent_cm": 1.18,
+    "left_indent_cm": 0,
+    "right_indent_cm": 0,
+    "line_spacing": 1.5,
+    "space_before_pt": 0,
+    "space_after_pt": 0,
+    "outline_level": 2,
+    "keep_with_next": true,
+    "page_break_before": false
+  },
+  "heading3": {
+    "style_name": "Heading 3",
+    "font": "宋体",
+    "font_en": "Times New Roman",
+    "font_cn": "宋体",
+    "size_pt": 16,
+    "bold": false,
+    "italic": false,
+    "color": "000000",
+    "align": "justify",
+    "first_line_indent_cm": 1.18,
+    "left_indent_cm": 0,
+    "right_indent_cm": 0,
+    "line_spacing": 1.5,
+    "space_before_pt": 0,
+    "space_after_pt": 0,
+    "outline_level": 3,
+    "keep_with_next": true,
+    "page_break_before": false
+  },
+  "body": {
+    "style_name": "正文内容",
+    "font_en": "Times New Roman",
+    "font_cn": "宋体",
+    "size_pt": 16,
+    "bold": false,
+    "italic": false,
+    "color": "000000",
+    "align": "left",
+    "first_line_indent_cm": 1.18,
+    "left_indent_cm": 0,
+    "right_indent_cm": 0,
+    "line_spacing": 1.5,
+    "space_before_pt": 0,
+    "space_after_pt": 0,
+    "widow_control": true,
+    "keep_together": false
+  },
+  "figure_caption": {
+    "style_name": "Normal",
+    "font_en": "Times New Roman",
+    "font_cn": "宋体",
+    "size_pt": 14,
+    "bold": false,
+    "italic": false,
+    "color": "000000",
+    "align": "center",
+    "first_line_indent_cm": 0,
+    "left_indent_cm": 0,
+    "right_indent_cm": 0,
+    "line_spacing": 1.0,
+    "space_before_pt": 0,
+    "space_after_pt": 0
+  },
+  "company_name": {
+    "style_name": "公司名称",
+    "font": "宋体",
+    "font_cn": "宋体",
+    "size_pt": 16,
+    "bold": true,
+    "italic": false,
+    "color": "000000",
+    "align": "center",
+    "first_line_indent_cm": 0,
+    "line_spacing": null,
+    "space_before_pt": null,
+    "space_after_pt": null
+  },
+  "note": {
+    "prefix": "注意：",
+    "font_en": "Times New Roman",
+    "font_cn": "宋体",
+    "size_pt": 16,
+    "bold": false,
+    "color": "000000",
+    "align": "left",
+    "first_line_indent_cm": 1.18,
+    "line_spacing": 1.5
+  },
+  "emu_conversions": {
+    "1pt": 12700,
+    "1cm": 360000,
+    "1inch": 914400,
+    "indent_1_18cm": 424800,
+    "16pt": 203200,
+    "22pt": 279400,
+    "14pt": 177800
+  }
+}

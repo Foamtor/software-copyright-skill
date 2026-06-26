@@ -1,0 +1,336 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Brand Profile",
+  "description": "软著说明书品牌配置文件，定义文档的所有格式规范",
+  "version": "1.0.0",
+  
+  "brand_info": {
+    "name": "农业农村部乡村振兴监测中心",
+    "description": "软著说明书标准格式",
+    "created_at": "2026-06-26",
+    "author": "ruanzhu-doc skill"
+  },
+  
+  "document_types": {
+    "user_manual": {
+      "name": "用户使用手册",
+      "description": "软件著作权申请用用户使用手册"
+    },
+    "design_specification": {
+      "name": "设计说明书",
+      "description": "软件著作权申请用设计说明书"
+    }
+  },
+  
+  "page_layout": {
+    "width_cm": 21.0,
+    "height_cm": 29.7,
+    "orientation": "portrait",
+    "margins": {
+      "top_cm": 2.54,
+      "bottom_cm": 2.54,
+      "left_cm": 3.17,
+      "right_cm": 3.17,
+      "header_distance_cm": 1.5,
+      "footer_distance_cm": 1.75
+    }
+  },
+  
+  "styles": {
+    "cover_title": {
+      "name": "封面标题",
+      "description": "封面软件名称",
+      "font": {
+        "name": "黑体",
+        "east_asia": "黑体",
+        "size_pt": 22,
+        "bold": true,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": null,
+        "space_before_pt": null,
+        "space_after_pt": null
+      }
+    },
+    
+    "cover_subtitle": {
+      "name": "封面副标题",
+      "description": "封面文档类型（如：用户使用手册）",
+      "font": {
+        "name": "黑体",
+        "east_asia": "黑体",
+        "size_pt": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "line_spacing": null,
+        "space_before_pt": null,
+        "space_after_pt": null
+      }
+    },
+    
+    "cover_company": {
+      "name": "封面公司名称",
+      "description": "封面著作权人",
+      "font": {
+        "name": "宋体",
+        "east_asia": "宋体",
+        "size_pt": 16,
+        "bold": true,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "line_spacing": null,
+        "space_before_pt": null,
+        "space_after_pt": null
+      }
+    },
+    
+    "cover_date": {
+      "name": "封面日期",
+      "description": "封面日期",
+      "font": {
+        "name": "宋体",
+        "east_asia": "宋体",
+        "size_pt": 16,
+        "bold": true,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "line_spacing": null,
+        "space_before_pt": null,
+        "space_after_pt": null
+      }
+    },
+    
+    "heading1": {
+      "name": "一级标题",
+      "description": "章标题（如：一、平台总体介绍）",
+      "word_style": "Heading 1",
+      "font": {
+        "name": "黑体",
+        "east_asia": "黑体",
+        "size_pt": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "justify",
+        "first_line_indent_cm": 1.18,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": 1.5,
+        "space_before_pt": 0,
+        "space_after_pt": 0,
+        "keep_with_next": true,
+        "page_break_before": false
+      },
+      "outline_level": 1
+    },
+    
+    "heading2": {
+      "name": "二级标题",
+      "description": "节标题（如：（一）平台功能概述）",
+      "word_style": "Heading 2",
+      "font": {
+        "name": "黑体",
+        "east_asia": "黑体",
+        "size_pt": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "justify",
+        "first_line_indent_cm": 1.18,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": 1.5,
+        "space_before_pt": 0,
+        "space_after_pt": 0,
+        "keep_with_next": true,
+        "page_break_before": false
+      },
+      "outline_level": 2
+    },
+    
+    "heading3": {
+      "name": "三级标题",
+      "description": "小节标题（如：1. 功能入口）",
+      "word_style": "Heading 3",
+      "font": {
+        "name": "宋体",
+        "east_asia": "宋体",
+        "size_pt": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "justify",
+        "first_line_indent_cm": 1.18,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": 1.5,
+        "space_before_pt": 0,
+        "space_after_pt": 0,
+        "keep_with_next": true,
+        "page_break_before": false
+      },
+      "outline_level": 3
+    },
+    
+    "body": {
+      "name": "正文",
+      "description": "正文内容",
+      "word_style": "Normal",
+      "font": {
+        "name_cn": "宋体",
+        "name_en": "Times New Roman",
+        "east_asia": "宋体",
+        "size_pt": 16,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "left",
+        "first_line_indent_cm": 1.18,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": 1.5,
+        "space_before_pt": 0,
+        "space_after_pt": 0,
+        "widow_control": true,
+        "keep_together": false
+      }
+    },
+    
+    "figure_caption": {
+      "name": "图名",
+      "description": "图片标题（如：图8 系统总体架构图）",
+      "font": {
+        "name_cn": "宋体",
+        "name_en": "Times New Roman",
+        "east_asia": "宋体",
+        "size_pt": 14,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "left_indent_cm": 0,
+        "right_indent_cm": 0,
+        "line_spacing": 1.0,
+        "space_before_pt": 0,
+        "space_after_pt": 0
+      }
+    },
+    
+    "table_caption": {
+      "name": "表名",
+      "description": "表格标题",
+      "font": {
+        "name_cn": "宋体",
+        "name_en": "Times New Roman",
+        "east_asia": "宋体",
+        "size_pt": 14,
+        "bold": false,
+        "italic": false,
+        "color": "#000000"
+      },
+      "paragraph": {
+        "alignment": "center",
+        "first_line_indent_cm": 0,
+        "line_spacing": 1.0,
+        "space_before_pt": 0,
+        "space_after_pt": 0
+      }
+    },
+    
+    "header": {
+      "name": "页眉",
+      "description": "页眉内容",
+      "left": {
+        "text": "{software_name}{version}",
+        "font": {
+          "name": "宋体",
+          "size_pt": 9,
+          "bold": false,
+          "color": "#000000"
+        }
+      },
+      "right": {
+        "text": "{page_number}",
+        "font": {
+          "name": "宋体",
+          "size_pt": 9,
+          "bold": false,
+          "color": "#000000"
+        }
+      }
+    },
+    
+    "footer": {
+      "name": "页脚",
+      "description": "页脚内容（页码）",
+      "alignment": "center"
+    }
+  },
+  
+  "content_rules": {
+    "min_total_chars": 15000,
+    "min_chapter_chars": 1500,
+    "min_section_chars": 300,
+    "min_chapters": 6,
+    "max_chapters": 10,
+    "min_images": 50,
+    "figure_caption_format": "图{number} {description}",
+    "require_first_chapter_intro": true
+  },
+  
+  "writing_style": {
+    "type": "user_guide",
+    "description": "用户操作指南风格",
+    "rules": [
+      "面向用户操作：描述用户点击什么、看到什么",
+      "语言简洁：不使用技术术语",
+      "图文结合：每个操作后跟'如下图'",
+      "图名独立：图名单独成段，14pt居中"
+    ],
+    "forbidden_patterns": [
+      "支持xxx功能",
+      "提供xxx能力",
+      "实现xxx管理"
+    ]
+  },
+  
+  "emu_conversions": {
+    "1pt": 12700,
+    "1cm": 360000,
+    "1inch": 914400,
+    "indent_1_18cm": 424800,
+    "16pt": 203200,
+    "22pt": 279400,
+    "14pt": 177800
+  }
+}

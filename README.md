@@ -9,6 +9,10 @@
 - 📖 **说明书撰写** — 分章节生成用户操作指南风格的说明书
 - 💻 **代码提取** — 按优先级提取核心代码，生成前30页+后30页
 - 🎯 **格式合规** — 严格遵循版权中心的字号、字体、排版要求
+- 🎨 **Brand Profile** — JSON格式的样式定义，支持复用和版本控制
+- 📊 **内容质量验证** — 自动检查字数、配图、格式等质量指标
+- 🔄 **迭代优化** — 支持"生成→验证→修改→再验证"循环
+- 🧪 **TDD测试** — 完整的测试套件，确保代码质量
 
 ## 🚀 快速开始
 
@@ -25,7 +29,7 @@ openclaw skills install Foamtor/software-copyright-skill
 ### 安装Python依赖
 
 ```bash
-pip install python-docx lxml Pillow olefile
+pip install python-docx docxtpl lxml Pillow
 ```
 
 ### 使用
