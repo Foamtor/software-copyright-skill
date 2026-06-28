@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "软著说明书内容Schema",
+  "description": "模型输出的说明书内容JSON格式定义",
+  "type": "object",
+  "required": ["cover", "sections"],
+  "properties": {
+    "cover": {
+      "type": "object",
+      "description": "封面信息",
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "软件全称+版本号，如：农村宅基地管理信息系统V1.0"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "副标题，如：用户手册",
+          "default": "用户手册"
+        },
+        "company": {
+          "type": "string",
+          "description": "著作权人/公司名称"
+        },
+        "date": {
+          "type": "string",
+          "description": "完成日期，如：二○二六年六月"
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "章节列表",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["heading", "content"],
+        "properties": {
+          "heading": {
+            "type": "string",
+            "description": "章节标题，如：一、系统概述"
+          },
+          "level": {
+            "type": "integer",
+            "description": "标题级别",
+            "enum": [1, 2, 3],
+            "default": 1
+          },
+          "content": {
+            "type": "string",
+            "description": "章节正文内容"
+          },
+          "images": {
+            "type": "array",
+            "description": "图片列表",
+            "items": {
+              "type": "object",
+              "required": ["ref", "description"],
+              "properties": {
+                "ref": {
+                  "type": "string",
+                  "description": "图片编号，如：图1"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "图片说明"
+                },
+                "path": {
+                  "type": "string",
+                  "description": "图片文件路径（可选）"
+                }
+              }
+            }
+          },
+          "notes": {
+            "type": "array",
+            "description": "注意事项列表",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subsections": {
+            "type": "array",
+            "description": "子章节列表",
+            "items": {
+              "type": "object",
+              "required": ["heading", "content"],
+              "properties": {
+                "heading": {
+                  "type": "string",
+                  "description": "子章节标题，如：（一）系统简介"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "子章节正文内容"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ref": {"type": "string"},
+                      "description": {"type": "string"}
+                    }
+                  }
+                },
+                "notes": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
